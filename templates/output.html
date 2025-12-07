@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthFoodGens - Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 min-h-screen p-8">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl font-bold text-white mb-2">Your Meal Suggestions</h1>
+        <p class="text-gray-400 mb-8">Here are some healthy options based on your ingredients</p>
+        
+        <div class="space-y-6">
+            {% set num=namespace(total=1) %}
+            {% for meal in data.meals%}
+                <div class="bg-slate-800 rounded-lg shadow-xl p-6 border border-slate-700 hover:border-emerald-500/50 transition duration-300">
+                    <h2 class="text-2xl font-bold text-white mb-4">{{num.total}}. {{meal.name}}</h2>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div class="bg-slate-700/50 rounded-lg p-4">
+                            <h3 class="text-emerald-400 font-semibold text-lg mb-3">Nutritional Facts</h3>
+                            <div class="space-y-2 text-gray-300">
+                                <p class="flex justify-between"><span class="text-gray-400">Calories:</span> <span class="font-medium">{{meal.calories}}</span></p>
+                                <p class="flex justify-between"><span class="text-gray-400">Protein:</span> <span class="font-medium">{{meal.protein}}</span></p>
+                                <p class="flex justify-between"><span class="text-gray-400">Fats:</span> <span class="font-medium">{{meal.fat}}</span></p>
+                                <p class="flex justify-between"><span class="text-gray-400">Carbs:</span> <span class="font-medium">{{meal.carbs}}</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-700/50 rounded-lg p-4">
+                            <h3 class="text-emerald-400 font-semibold text-lg mb-3">Ingredients</h3>
+                            <div class="space-y-1 text-gray-300 max-h-32 overflow-y-auto">
+                                {% for i in meal.ingredients %}
+                                    <p class="text-sm">• {{i.item}} - {{i.quantity}}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700">
+                        <div class="text-gray-300">
+                            <span class="text-gray-400 text-sm">Prep Time:</span> 
+                            <span class="font-semibold text-white ml-2">{{meal.prep_time}}</span>
+                        </div>
+                        <a href="{{meal.recipe_page}}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200 shadow-lg hover:shadow-emerald-500/50">
+                            View Recipe
+                        </a>
+                    </div>
+                </div>
+                {%set num.total = num.total+1%}
+            {% endfor %}
+        </div>
+        
+        <div class="mt-8 text-center">
+            <a href="/">
+                <button class="bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-200 border border-slate-600 hover:border-slate-500">
+                    ← Suggest New Meals
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

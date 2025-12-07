@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthFoodGens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center p-8">
+    <div class="w-full max-w-2xl">
+        <h1 class="text-4xl font-bold text-white mb-2 text-center">HealthFoodGens</h1>
+        <p class="text-gray-400 text-center mb-8">Generate healthy meal ideas from your ingredients</p>
+        
+        <div class="bg-slate-800 rounded-lg shadow-2xl p-8 border border-slate-700">
+            <form action="/output" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Your Ingredients</label>
+                    <textarea 
+                        name="ingredients" 
+                        placeholder="Enter your ingredients (e.g., chicken, rice, broccoli...)" 
+                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200 resize-none h-32"
+                    ></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Type of Meal</label>
+                    <input 
+                        name="type" 
+                        placeholder="e.g., dinner, lunch, breakfast" 
+                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200"
+                    >
+                </div>
+                
+                <button 
+                    type="submit" 
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-lg hover:shadow-emerald-500/50 transform hover:scale-[1.02]"
+                >
+                    Generate Meal Ideas
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
