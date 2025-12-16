@@ -93,7 +93,6 @@ Now generate the meals.
     output = prompt.text[7:-3]
     data = json.loads(output)
     session["meals"] = data  # meals_json is the dict returned by AI
-    print(data)
     
     return render_template("output.html", data=data)
 
